@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Jak získat Google API client ID a nezbláznit se"
+permalink: /google-client-id-through-auth-platform
 date:   2024-11-06 19:06:56 +0100
 categories: google auth api
 ---
@@ -15,8 +16,8 @@ TLDR;
 Pokud použijete starý způsob nastavení OAuth client ID, mělo by to fungovat. Článek se týká nové administrace přes [Google Auth Platform](https://console.cloud.google.com/auth/audience). A ta má mouchy.
 
 ## Kdy bych měl číst tenhle článek?
-- Chci implementovat přilašování přes Google (Sign-In with Google)
-- Nechci strávit hodiny času googlením proč to nefunguje
+- Chci implementovat přilašování přes Google (Sign-In with Google) ve své aplikaci
+- Nechci strávit hodiny času hledáním proč to nefunguje
 - Starý způsob nastavení OAuth už nefunguje
 - Chci se naučit s Google Auth Platform
 
@@ -32,55 +33,55 @@ Nejdříve je potřeba založit projekt v [Google Cloud Console](https://console
 
 Je to zdarma, stačí být přihlášený do Google Account. Bezplatně lze založit 10 projektů. Potom můžete zažádat o navýšení.
 
-### 1. Jak založit projekt v Google Cloud Console
-Jděte na adresu https://console.cloud.google.com/, klikněte na "Select project" a v pravém horním rohu klikněte na tlačítko "New Project".
+### 1. Založení projektu v Google Cloud Console
+Jděte na adresu [Google Cloud Console](https://console.cloud.google.com/), klikněte na "Select project" a v pravém horním rohu klikněte na tlačítko "New Project".
 
-<!-- ![New project screenshot](/assets/images/image.png) -->
+<!-- ![New project screenshot](/assets/images/google-client-id/image.png) -->
 
 <!-- Jméno projektu může být téměř jakkékoliv (bez diakritiky) - mezery jsou povoleny. Google vygneruje unikátní Project ID na základě tohoto jména.
 
-![Create project screenshot](/assets/images/image-1.png) -->
+![Create project screenshot](/assets/images/google-client-id/image-1.png) -->
 
 Po založení projektu se přes tlačítko "Select project" přepněte do projektu.
 
 Pokud se teď pokusíte vytvořit OAuth klienta, dopadne to takhle.
 
-![Create OAuth client without consent screen](/assets/images/image-4.png)
+![Create OAuth client without consent screen](/assets/images/google-client-id/image-4.png)
 
 ### 2. Konfigurace OAuth Consent Screen
 >Bez vyplněné OAuth Consent Screen nelze vytvořit OAuth client ID.
 
-Buď jste v předchozím kroku klikli na tlačítko "CONFIGURE CONSENT SCREEN", nebo se do konfigurace OAuth consent screen přepněte následovně:
+Buď jste v předchozím kroku klikli na tlačítko "**CONFIGURE CONSENT SCREEN**", nebo se do konfigurace OAuth consent screen přesunete následovně:
 
-1. klikněte na kartu "APIs & Services" (nebo přes rozbalovací menu v levém horním rohu)
+1. V dasboardu projektu klikněte na kartu "APIs & Services" (nebo přes rozbalovací menu v levém horním rohu)
 2. V menu vyberte OAuth consent screen
 
-<!-- ![APIs & Services btn](/assets/images/image-2.png) -->
-<!-- ![OAuth Consent Screen menu](/assets/images/image-3.png) -->
+<!-- ![APIs & Services btn](/assets/images/google-client-id/image-2.png) -->
+<!-- ![OAuth Consent Screen menu](/assets/images/google-client-id/image-3.png) -->
 
 Tím se dostanete do klasické (staré) konfigurace (viz screenshot).
 
 **My teď klikneme na tlačítko "GO TO NEW EXPERIENCE"**
 
-![OAuth consent screen old configuration](/assets/images/image-5.png)
+![OAuth consent screen old configuration](/assets/images/google-client-id/image-5.png)
 
-To vás přesměruje sem.
+To vás přesměruje do [Google Auth Platform](https://console.cloud.google.com/auth/audience).
 
-![OAuth consent screen new configuration](/assets/images/image-6.png)
+![OAuth consent screen new configuration](/assets/images/google-client-id/image-6.png)
 
-Klikneme na "GET STARTED" a vyplníme formulář. Klikneme na "CREATE".
+Klikneme na "**GET STARTED**" a vyplníme formulář. Klikneme na "**CREATE**".
 
-![OAuth consent screen new form](/assets/images/image-7.png)
+![OAuth consent screen new form](/assets/images/google-client-id/image-7.png)
 
-Po úspěšném vytvoření budete přesměrování do záložky Overview, kde je tlačítko "CRATE OAUTH CLIENT".
+Po úspěšném vytvoření budete přesměrování do záložky Overview, kde je tlačítko "**CRATE OAUTH CLIENT**".
 
-![Google Auth Platform Overview](/assets/images/image-9.png)
+![Google Auth Platform Overview](/assets/images/google-client-id/image-9.png)
 
 Tím se dostáváme do pekla.
 
-Po kliknutí na tlačítko "CRETE OAUTH CLIENT" jste přesměrování do záložky Clients, kde svítí tlačítko "CONFIGURE CONSENT SCREEN".
+Po kliknutí na tlačítko "**CRETE OAUTH CLIENT**" jste přesměrování do záložky Clients, kde svítí tlačítko "**CONFIGURE CONSENT SCREEN**".
 
-![Google Auth Platform Clients](/assets/images/image-10.png)
+![Google Auth Platform Clients](/assets/images/google-client-id/image-10.png)
 
 A jste v pekle.
 
@@ -94,23 +95,25 @@ Můžete cokoliv změnit, vyplnit všechna pole .. nic nepomůže (můžete mi v
 
 **Musíte vypublikovat appku.**
 
-U jednoho projektu mi stačilo pouze appku vypublikovat. U druhého jsem ještě musel *zneužít Verification Center*.
+Vypublikovat aplikaci můžete v záložce Audience přes tlačítko "**Publish App**".
 
-![alt text](/assets/images/image-12.png)
+![alt text](/assets/images/google-client-id/image-12.png)
+
+U jednoho projektu mi stačilo pouze appku vypublikovat. U druhého jsem ještě **musel *zneužít Verification Center***.
 
 Pokud vypublikování aplikace nepomůže. Zkuste nastavit nějaké sensitive scopes (Data Access záložka). 
 
 Potom se zobrazí upozornění ohledně verifikace aplikce. 
 
-V záložce **Verification Center** pak na vás - po najetí šipkou na text "PREPARE FOR VERIFICATION" - vyskočí tlačítko "CREATE OAUTH CLIENT". 
+V záložce **Verification Center** pak na vás - po najetí šipkou na text "PREPARE FOR VERIFICATION" - vyskočí tlačítko "**CREATE OAUTH CLIENT**". 
 
-![Verification center](/assets/images/image-11.png)
+![Verification center](/assets/images/google-client-id/image-11.png)
 
 A tohle tlačítko funguje! 
 
 Přesměruje vás na tu samou záložku "Clients" - ale už můžete vytvořit klienta.
 
-![Create OAuth client ID](/assets/images/image-13.png)
+![Create OAuth client ID](/assets/images/google-client-id/image-13.png)
 
 Ještě předtím, než klienta vytvoříte, můžete vrátit status aplikace zpět do Testing. 
 
