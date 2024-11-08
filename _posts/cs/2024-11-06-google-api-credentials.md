@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Jak získat Google API client ID a nezbláznit se"
-permalink: /google-client-id-through-auth-platform
 date:   2024-11-06 19:06:56 +0100
-categories: google auth api
+permalink: /cs/google-cleint-id-pres-auth-platform
+categories: cs google auth api
 ---
 
 Tohle je postup, jak získat Google API client ID přes [Google Auth Platform](https://console.cloud.google.com/auth/audience) a nezbláznit se u toho.
