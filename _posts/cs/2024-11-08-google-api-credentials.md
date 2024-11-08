@@ -36,7 +36,7 @@ Je to zdarma, stačí být přihlášený do Google Account. Bezplatně lze zalo
 ### 1. Založení projektu v Google Cloud Console
 Jděte na adresu [Google Cloud Console](https://console.cloud.google.com/), klikněte na "**Select project**" a v pravém horním rohu klikněte na tlačítko "**New Project**".
 
-Po založení projektu se přes tlačítko "Select project" přepněte do projektu.
+Po založení projektu se přes tlačítko "**Select project**" přepněte do projektu.
 
 Pokud se teď pokusíte vytvořit OAuth klienta, dopadne to takhle.
 
@@ -47,7 +47,7 @@ Pokud se teď pokusíte vytvořit OAuth klienta, dopadne to takhle.
 
 Buď jste v předchozím kroku klikli na tlačítko "**CONFIGURE CONSENT SCREEN**", nebo se do konfigurace OAuth consent screen přesunete následovně:
 
-1. V dasboardu projektu klikněte na kartu "APIs & Services" (nebo přes rozbalovací menu v levém horním rohu)
+1. V dasboardu projektu klikněte na kartu "**APIs & Services**" (nebo přes rozbalovací menu v levém horním rohu)
 2. V menu vyberte OAuth consent screen
 
 Tím se dostanete do klasické (staré) konfigurace (viz screenshot).
