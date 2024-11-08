@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Jak získat Google API client ID a nezbláznit se"
-date:   2024-11-06 19:06:56 +0100
+date:   2024-11-08 11:00:00 +0100
 permalink: /cs/google-cleint-id-pres-auth-platform
 categories: cs google auth api
 ---
@@ -34,13 +34,7 @@ Nejdříve je potřeba založit projekt v [Google Cloud Console](https://console
 Je to zdarma, stačí být přihlášený do Google Account. Bezplatně lze založit 10 projektů. Potom můžete zažádat o navýšení.
 
 ### 1. Založení projektu v Google Cloud Console
-Jděte na adresu [Google Cloud Console](https://console.cloud.google.com/), klikněte na "Select project" a v pravém horním rohu klikněte na tlačítko "New Project".
-
-<!-- ![New project screenshot](/assets/images/google-client-id/image.png) -->
-
-<!-- Jméno projektu může být téměř jakkékoliv (bez diakritiky) - mezery jsou povoleny. Google vygneruje unikátní Project ID na základě tohoto jména.
-
-![Create project screenshot](/assets/images/google-client-id/image-1.png) -->
+Jděte na adresu [Google Cloud Console](https://console.cloud.google.com/), klikněte na "**Select project**" a v pravém horním rohu klikněte na tlačítko "**New Project**".
 
 Po založení projektu se přes tlačítko "Select project" přepněte do projektu.
 
@@ -55,9 +49,6 @@ Buď jste v předchozím kroku klikli na tlačítko "**CONFIGURE CONSENT SCREEN*
 
 1. V dasboardu projektu klikněte na kartu "APIs & Services" (nebo přes rozbalovací menu v levém horním rohu)
 2. V menu vyberte OAuth consent screen
-
-<!-- ![APIs & Services btn](/assets/images/google-client-id/image-2.png) -->
-<!-- ![OAuth Consent Screen menu](/assets/images/google-client-id/image-3.png) -->
 
 Tím se dostanete do klasické (staré) konfigurace (viz screenshot).
 
@@ -85,7 +76,7 @@ Po kliknutí na tlačítko "**CRETE OAUTH CLIENT**" jste přesměrování do zá
 
 A jste v pekle.
 
-Když znovu kliknete na tlačítko "CONFIGURE CONSENT SCREEN", jste přesměrování do sekce Branding, kde už jsou předvyplněné informace z formuláře, který jste před chvílí vyplňovali.
+Když znovu kliknete na tlačítko "**CONFIGURE CONSENT SCREEN**", jste přesměrování do sekce Branding, kde už jsou předvyplněné informace z formuláře, který jste před chvílí vyplňovali.
 
 Můžete cokoliv změnit, vyplnit všechna pole .. nic nepomůže (můžete mi věřit).
 
